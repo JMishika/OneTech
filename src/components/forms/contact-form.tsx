@@ -1,77 +1,65 @@
 "use client";
 
-import { useFormStatus } from "react-dom";
-import { useEffect, useRef, useActionState } from "react";
+import { useRef } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { submitContactForm, type FormState } from "@/app/actions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Loader2 } from "lucide-react";
-
-const initialState: FormState = {
-  message: "",
-  success: false,
-};
-
-function SubmitButton() {
-  const { pending } = useFormStatus();
-  return (
-    <Button type="submit" className="w-full" disabled={pending}>
-      {pending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
-      {pending ? "Envoi en cours..." : "Envoyer le Message"}
-    </Button>
-  );
-}
+import { MessageSquare } from "lucide-react";
 
 export function ContactForm() {
-  const [state, formAction] = useActionState(submitContactForm, initialState);
   const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
 
-  useEffect(() => {
-    if (state.message) {
-      if (state.success) {
+  const handleWhatsAppSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (formRef.current) {
+      const formData = new FormData(formRef.current);
+      const name = formData.get("name") as string;
+      const email = formData.get("email") as string;
+      const message = formData.get("message") as string;
+
+      if (!name?.trim() || !email?.trim() || !message?.trim()) {
         toast({
-          title: "Succès!",
-          description: state.message,
-        });
-        formRef.current?.reset();
-      } else {
-        toast({
-          title: "Erreur",
-          description: state.message,
+          title: "Champs Incomplets",
+          description: "Veuillez remplir tous les champs avant d'envoyer via WhatsApp.",
           variant: "destructive",
         });
+        return;
       }
+      
+      const whatsappText = `Nouveau message depuis le site web :\n\n*Nom:* ${name}\n*Email:* ${email}\n\n*Message:*\n${message}`;
+      const whatsappUrl = `https://wa.me/243859858240?text=${encodeURIComponent(whatsappText)}`;
+      window.open(whatsappUrl, '_blank');
+      
+      toast({
+        title: "Redirection vers WhatsApp",
+        description: "Votre message est prêt à être envoyé.",
+      });
+      formRef.current.reset();
     }
-  }, [state, toast]);
+  };
 
   return (
-    <form ref={formRef} action={formAction} className="space-y-4">
-      <div>
-        <Label htmlFor="name">Nom</Label>
-        <Input id="name" name="name" type="text" placeholder="Votre nom complet" required />
-        {state.errors?.name && (
-          <p className="text-sm text-destructive mt-1">{state.errors.name[0]}</p>
-        )}
+    <form ref={formRef} onSubmit={handleWhatsAppSubmit} className="space-y-6">
+      <div className="space-y-4">
+        <div>
+          <Label htmlFor="name">Nom</Label>
+          <Input id="name" name="name" type="text" placeholder="Votre nom complet" required />
+        </div>
+        <div>
+          <Label htmlFor="email">Email</Label>
+          <Input id="email" name="email" type="email" placeholder="Votre adresse e-mail" required />
+        </div>
+        <div>
+          <Label htmlFor="message">Message</Label>
+          <Textarea id="message" name="message" placeholder="Comment pouvons-nous vous aider ?" rows={5} required />
+        </div>
       </div>
-      <div>
-        <Label htmlFor="email">Email</Label>
-        <Input id="email" name="email" type="email" placeholder="Votre adresse e-mail" required />
-        {state.errors?.email && (
-          <p className="text-sm text-destructive mt-1">{state.errors.email[0]}</p>
-        )}
-      </div>
-      <div>
-        <Label htmlFor="message">Message</Label>
-        <Textarea id="message" name="message" placeholder="Comment pouvons-nous vous aider ?" rows={5} required />
-        {state.errors?.message && (
-          <p className="text-sm text-destructive mt-1">{state.errors.message[0]}</p>
-        )}
-      </div>
-      <SubmitButton />
+      <Button type="submit" className="w-full">
+          <MessageSquare className="mr-2 h-4 w-4" /> Envoyer via WhatsApp
+      </Button>
     </form>
   );
 }
