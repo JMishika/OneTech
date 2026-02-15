@@ -1,0 +1,28 @@
+{
+  "placeholderImages": [
+    {
+      "id": "team-photo",
+      "description": "A professional tech team in an office setting.",
+      "imageUrl": "https://images.unsplash.com/photo-1579389083046-e3df9c2b3325?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx0ZWFtJTIwb2ZmaWNlfGVufDB8fHx8MTc3MDQ3NjE2MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "team office"
+    },
+    {
+      "id": "kinshasa-map",
+      "description": "A map showing a location in Kinshasa.",
+      "imageUrl": "https://images.unsplash.com/photo-1717700299588-ee73dc7de1fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtYXAlMjBjaXR5fGVufDB8fHx8MTc3MDU3MDQ4Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "map city"
+    },
+    {
+      "id": "agency-logo",
+      "description": "The One Tech agency logo",
+      "imageUrl": "https://picsum.photos/seed/logo/128/96",
+      "imageHint": "tech planet logo"
+    },
+    {
+      "id": "motherboard-hero",
+      "description": "A close-up of a computer motherboard circuit.",
+      "imageUrl": "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtb3RoZXJib2FyZCUyMGNpcmN1aXR8ZW58MHx8fHwxNzczNzI3NTg2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "motherboard circuit"
+    }
+  ]
+}

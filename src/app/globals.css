@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 83% 4%; /* Near black */
+    --foreground: 210 20% 98%; /* Almost white */
+
+    --card: 222 83% 9%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 222 83% 9%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 217 91% 60%; /* Vibrant Blue */
+    --primary-foreground: 210 20% 98%;
+
+    --secondary: 217 32% 17%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 217 32% 22%;
+    --muted-foreground: 215 25% 65%;
+
+    --accent: 260 100% 75%; /* Bright Purple/Fuchsia */
+    --accent-foreground: 210 20% 98%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 217 32% 17%;
+    --input: 217 32% 17%;
+    --ring: 217 91% 60%;
+    
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 222 83% 4%;
+    --foreground: 210 20% 98%;
+
+    --card: 222 83% 9%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 222 83% 9%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 210 20% 98%;
+
+    --secondary: 217 32% 17%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 217 32% 22%;
+    --muted-foreground: 215 25% 65%;
+
+    --accent: 260 100% 75%;
+    --accent-foreground: 210 20% 98%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 217 32% 17%;
+    --input: 217 32% 17%;
+    --ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .animated-gradient {
+    background: linear-gradient(-45deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary)), hsl(var(--secondary)));
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes particle {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(
+      calc(var(--particle-x, 0) * 1px),
+      calc(var(--particle-y, 0) * 1px),
+      0
+    );
+    opacity: 0;
+  }
+}
+
+.animate-particle {
+  animation-name: particle;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
