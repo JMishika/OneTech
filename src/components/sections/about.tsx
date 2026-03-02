@@ -13,23 +13,20 @@ const skills = [
 const testimonials = [
   {
     quote: "L'équipe d'One Tech a transformé notre présence en ligne. Leur professionnalisme est sans égal.",
-    name: "Jean-Pierre K.",
+    name: "Jean-Pierre Kitenge",
     company: "CEO, Kinshasa Ventures",
-    avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704d",
     avatarFallback: "JP",
   },
   {
     quote: "Une réactivité et une expertise technique qui nous ont permis de déployer notre projet en un temps record.",
-    name: "Marie N.",
+    name: "Marie Ngoyi.",
     company: "Directrice, Congo Logistics",
-    avatar: "https://i.pravatar.cc/150?u=a042581f4e29026705d",
     avatarFallback: "MN",
   },
   {
     quote: "Enfin un partenaire fiable pour toute notre infrastructure informatique. Je recommande vivement.",
-    name: "David M.",
+    name: "David Mulumba.",
     company: "Gérant, Etoile du Fleuve",
-    avatar: "https://i.pravatar.cc/150?u=a042581f4e29026706d",
     avatarFallback: "DM",
   },
 ];
