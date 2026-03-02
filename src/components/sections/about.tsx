@@ -19,13 +19,13 @@ const testimonials = [
   },
   {
     quote: "Une réactivité et une expertise technique qui nous ont permis de déployer notre projet en un temps record.",
-    name: "Marie Ngoyi.",
+    name: "Marie Ngoyi",
     company: "Directrice, Congo Logistics",
     avatarFallback: "MN",
   },
   {
     quote: "Enfin un partenaire fiable pour toute notre infrastructure informatique. Je recommande vivement.",
-    name: "David Mulumba.",
+    name: "David Mulumba",
     company: "Gérant, Etoile du Fleuve",
     avatarFallback: "DM",
   },
